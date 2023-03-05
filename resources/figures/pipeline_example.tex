@@ -1,0 +1,32 @@
+\begin{figure}
+\setlength{\tabcolsep}{0.5pt}
+    \centering
+    { \small 
+\begin{tabular}{ccccc}
+Original & e4e Encoding & $+$PTI & $+$Editing & $+$Stitching \\
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/source_0010.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/e4e_0010.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/pti_0010.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_0010.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_stitching_10.png}} \\
+
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/source_0015.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/e4e_0015.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/pti_0015.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_0015.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_stitching_15.png}} \\
+
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/source_0020.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/e4e_0020.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/pti_0020.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_0020.jpeg}} &
+\raisebox{-.32\totalheight}{\includegraphics[width=0.2\columnwidth]{resources/images/pipeline_example/edit_stitching_20.png}} \\
+
+\end{tabular}
+}
+
+
+\caption{Visualization of our full editing pipeline. In the left column, we show three frames extracted from the source video. In the following columns, we show intermediate results of our pipeline over the same three frames. Left to right: the encoder-inversion step, the PTI fine-tuning step, the pivot editing step, and finally our stitching procedure. When not applying our stitching procedure, we use a segmentation-mask based blending procedure~\shortcite{yao2021latent}. Note in particular the neck region, which displays considerable artifacts after the editing step which are then eliminated through our stitching-tuning approach. }
+
+\label{fig:pipeline_example}
+\end{figure}

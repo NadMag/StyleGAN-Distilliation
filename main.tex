@@ -1,0 +1,99 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
+% \usepackage[review]{cvpr}      % To produce the REVIEW version
+% \usepackage{cvpr}              % To produce the CAMERA-READY version
+\usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+
+
+\usepackage{booktabs} % For formal tables
+
+% TOG prefers author-name bib system with square brackets
+% \citestyle{acmauthoryear}
+%\setcitestyle{nosort,square} % nosort to allow for manual chronological ordering
+
+
+%\usepackage{biblatex}
+
+
+
+\usepackage[ruled]{algorithm2e} % For algorithms
+\usepackage{soul} 
+
+\usepackage{commath} 
+\usepackage{float}
+\usepackage{pifont} % for ding
+
+%Additional packages
+\usepackage{multirow}
+
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\usepackage{amsmath}
+
+\usepackage[pagebackref,breaklinks,colorlinks]{hyperref}
+
+\newcommand{\shortcite}[1]{\cite{#1}}
+
+\input{macros}
+
+\makeatletter
+\apptocmd\@maketitle{{\myfigure{}\par}}{}{}
+\makeatother
+
+
+% Document starts
+\begin{document}
+
+% Title portion
+\title{
+Stitch it in Time: GAN-Based Facial Editing of Real Videos}
+
+\newcommand\myfigure{%
+\input{resources/figures/teaser2}
+}
+
+\author{Rotem Tzaban \and Ron Mokady \and Rinon Gal \and Amit H. Bermano \and Daniel Cohen-Or \and \\ The Blavatnik School of Computer Science, Tel Aviv University}
+
+
+\maketitle
+
+% \input{resources/figures/teaser}
+
+\begin{abstract}
+
+\input{abstract}
+\end{abstract}
+
+% \begin{teaserfigure}
+%     \centering
+%     \input{resources/figures/teaser}
+%     \label{fig:teaser}
+% \end{teaserfigure}
+
+
+
+
+
+\input{intro}
+
+\input{related}
+
+\input{method}
+
+\input{results}
+
+\input{conclusion}
+
+\newpage
+
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+
+\end{document}
+
+
+

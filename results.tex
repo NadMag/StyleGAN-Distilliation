@@ -1,0 +1,63 @@
+\section{Experiments}
+
+We demonstrate the effectiveness of our method by applying it to a range of in-the-wild videos gathered from popular publicly available content. These include challenging scenes characterized by complex backgrounds and considerable movement.
+% \st{Unless otherwise noted, all frames were inverted using a pre-trained e4e~\cite{tov2021designing} encoder into the \w space of the network.} \rmc{I believe we end inverting to W+.. anyway we discuss e4e in the method, it belongs to there to my opinion.} 
+Individual frames were edited using InterFaceGAN~\cite{shen2020interpreting} and StyleCLIP~\cite{patashnik2021styleclip}. All experiments were conducted on a single NVIDIA RTX 2080. The total editing time for a single $300$ frames video is roughly $1.5$ hours.
+The full videos for each setup can be found in our supplementary materials.
+
+\subsection{Qualitative Results}
+
+\input{resources/figures/ours}
+\input{resources/figures/ours_harris}
+
+%We conduct a qualitative evaluation of our method using a series of challenging, in-the-wild scenes from popular publicly available content. 
+
+In \cref{fig:ours,fig:harris} we show key frames extracted from videos edited using our method. Our approach can handle challenging, highly detailed backgrounds, as well as considerable head movement and speech, all of which are beyond the scope of the current state-of-the-art. Moreover, by editing at the frame level, our method is inherently compatible with existing editing techniques, can support manipulations in multiple latent spaces, and can be easily applied for both spatially local (e.g., smile) and global (e.g., age) changes. 
+% \abc{maybe add some specifics here? something like, note that the stitching maintains the straight lines of the shades in the back, and that the skin tone is preserved well through-out the progression of frames} \rgc{I don't think it's needed. We show this and talk about this in our comparisons / ablations where you can also actually see the effects.}
+
+
+\input{resources/figures/comparison}
+
+
+In \cref{fig:comparison} we compare our method to~\cite{yao2021latent}, the current state-of-the-art in semantic editing of faces in videos. 
+%When working on their simpler scenes, our method maintains improved identity and avoids pitfalls like the appearance of artifacts around stitching regions. 
+When evaluating their method on our more challenging scenes, we observe considerable quality degradation and loss of temporal coherence. Our method, in contrast, maintains high fidelity and consistent editing without relying on any explicit temporal smoothing.
+Note in particular the blurry artifacts induced by \cite{yao2021latent} when blending the shirt. Moreover, the employment of optimization-based PTI results in the age changing between the different frames.
+
+% Due to the inconsistency between the pivots, different frames are affected differently by the editing which leads to an unrealistic outcome.
+
+\input{resources/figures/ood}
+In \cref{fig:ood} we showcase our ability to edit out-of-domain videos. Both the encoder and PTI can seamlessly adapt to animated faces. Furthermore, the alignment of fine-tuned StyleGAN models ensures we can re-use the same editing directions, as previously demonstrated by \cite{gal2021stylegannada}, \cite{alaluf2021hyperstyle} and \cite{zhu2021mind}.
+
+
+\subsection{Quantitative Results}
+\label{sec:quantitative}
+
+We next evaluate our method quantitatively. As previously outlined, we expect that encoder-based methods will be smoother at the local level, avoiding the jitter induced by optimization techniques. On the other hand, we expect them to display considerable identity drift at the global scale - with the minor inversion inconsistencies between the frames building up over time. To validate our intuition and evaluate the temporal coherence of videos, we propose two novel metrics: temporally-local (TL-ID) and temporally-global (TG-ID) identity preservation. 
+
+
+In the first case, TL-ID, we aim to evaluate the video's consistency at the local level. We do so by employing an off-the-shelf identity detection network~\cite{deng2019arcface} to evaluate the identity similarity between pairs of adjacent video frames. To account for the effect of inconsistencies in the identity network itself, we normalize these identity preservation scores by the similarity score of each pair of frames in the original video. Finally, we average the normalized scores over the entire video, and then once again over a set of videos.
+Higher TL-ID scores indicate that the method produces \textit{smooth} results, without considerable \textit{local} identity jitter. 
+
+
+Our second metric, TG-ID, employs the same identity detection network and averaging scheme to evaluate the similarity between all possible pairs of video frames, not necessarily adjacent. This metric aims to capture longer-range coherence and identify slow, but consistent identity drift.
+For both metrics, a score of $1$ would indicate that the method successfully maintains the identity consistency of the original video.
+Note that both metrics only compare frames \textit{within} a given video. As such, they do not measure the similarity of the inversions to those of the original video. Rather, we focus on quantifying the temporal consistency of these inversions and the editing operations they support.
+
+We utilize both metrics to evaluate our method against the baseline PTI~\cite{roich2021pivotal}, as well as Latent Transformer~\cite{yao2021latent} which makes use of a pre-trained pSp~\cite{richardson2020encoding} encoder for inversion. The results are shown in \cref{tb:temporal_id}. As expected, encoder-based methods outperform the optimization-based method on local consistency, demonstrating that they do indeed provide a smooth prior. Moreover, combining an encoder with PTI results in local consistency which is just shy of $1$, showing that the proposed pipeline is sufficient to inherit almost all temporal consistency from the source video.
+
+
+On the global front, PTI improves identity preservation over longer time spans. While editing is still susceptible to the inconsistencies of the local pivots, the encoder-based methods lead to an identity drift that eventually surpasses the local jitter. PTI, meanwhile, constantly re-aligns the identity to that of the source video, avoiding longer term drift. Notably, PTI does demonstrate some drop in global performance when compared to the local score. We hypothesize that this originates in the increased distance between pivots when optimizing around distant frames.
+By leveraging PTI, our method can similarly maintain a high level of global consistency, and even outperform PTI thanks to more consistent pivot codes.
+
+\input{resources/tables/temporal_id}
+
+\subsection{Ablation Study}
+\label{sec:ablation}
+
+We further demonstrate the benefits of each component in our pipeline by conducting an ablation study. In \cref{fig:ablation} we show key frames from a video edited using our method when crucial steps of the pipeline are removed or replaced. We showcase the effects of replacing the encoder with an optimization method (w/o e4e), removing the PTI generator-tuning step, replacing the stitching-tuning step by {\naive}ly pasting the edited image inside the segmentation mask, and finally our full pipeline.
+
+Without an encoder, the edited frames become inconsistent when the face undergoes considerable movement or changes in expression. Without PTI, frames are less faithful to the original video, stitching performance suffers, and identity changes over longer time periods.
+Without stitching, artifacts appear around the hair and borders of the segmentation mask (\ie the edge of the face). Our full method maintains both local and long term consistency, and seamlessly melds the edited region into the original frame.
+
+\input{resources/figures/ablation}

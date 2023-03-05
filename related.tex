@@ -1,0 +1,41 @@
+\section{Background and Related Work}~\label{sec:rw}
+
+\vspace{-12pt}
+
+\paragraph{StyleGAN-based Editing}
+
+StyleGAN~\cite{karras2019style, karras2020analyzing} employ a style-based architecture to generate high fidelity images from a semantically rich and highly structured latent space. Remarkably, StyleGAN enables realistic editing of images through simple latent code modifications.
+Motivated by this, many methods have discovered meaningful latent directions, using various levels of supervision. These range from full-supervision~\cite{shen2020interpreting,abdal2020styleflow,denton2019detecting, goetschalckx2019ganalyze, tewari2020pie, tewari2020stylerig}, such as attributes labels or facial $3$D priors, to completely unsupervised and zero-shot approaches~\cite{harkonen2020ganspace,shen2020closedform,voynov2020unsupervised,wang2021a,patashnik2021styleclip,xia2021tedigan,gal2021stylegannada}.  
+
+\paragraph{GAN Inversion}
+
+%With the phenomenal success of latent-based editing, it was only natural that considerable effort would be invested into harnessing StyleGAN's latent space to edit real images. \ron{This is too long to my opinion}
+
+However, applying these editing methods to real images requires one to first find the corresponding latent representation of the given image, a process referred to as \textit{GAN inversion} \cite{zhu2016generative,lipton2017precise,creswell2018inverting, yeh2017semantic, xia2021gan}. 
+Multiple works have studied inversion in the context of StyleGAN.
+% this critical problem of StyleGAN inversion, by
+They either directly optimize the latent vector to reproduce a specific image ~\cite{abdal2019image2stylegan,abdal2020image2stylegan++,semantic2019bau,zhu2020improved,gu2020image, xu2021continuity, roich2021pivotal}, or train an efficient encoder over large collection of images~\cite{zhu2020domain, pidhorskyi2020adversarial,guan2020collaborative,richardson2020encoding,tov2021designing,alaluf2021restyle,kang2021gan,kim2021exploiting, alaluf2021hyperstyle}. Typically, direct optimization is more accurate, but encoders are faster at inference. Moreover, due to their nature as highly parametric neural function estimators, encoders display a smoother behavior, tending to produce more coherent results over similar inputs. We draw on these benefits in our work.
+
+Earlier inversion methods produced code in one of two spaces: either in the native latent space of StyleGAN, denoted \w, or in the more expressive \wplus, where a distinct latent code is assigned to each of the generator's layers.
+It has since been shown ~\cite{zhu2020improved, tov2021designing} that $\mathcal{W}$ exhibits a higher degree of editability --- latent codes in this space can be more easily manipulated while preserving a higher degree of realism. On the other hand, $\mathcal{W}$ offers poor expressiveness, resulting in inversions that are often inconsistent with the target identity.
+Tov~et al.~\cite{tov2021designing} define this as the distortion-editability trade-off. They suggest that the two aspects can be balanced by designing an encoder that predicts codes in \wplus which reside close to $\mathcal{W}$. 
+More recently, Roich~\etal~\shortcite{roich2021pivotal} demonstrated that one may side-step this trade-off. By fine-tuning the generator around an initial inversion code, dubbed the 'pivot', they achieve state-of-the-art reconstructions with a high level of editability. 
+However, {\naive}ly applying PTI to a video can result in temporal inconsistencies, as the different pivots are not necessarily coherent. A different approach to improve inversion quality was proposed by Xu et al.\shortcite{xu2021continuity}, utilizing a sequence of frames instead of a single image. 
+
+\paragraph{Video Generation using StyleGAN}
+
+While most works have explored the use of StyleGAN in the image domain, a few recent works sought to bring its many benefits to the realm of video generation and manipulation.
+On the generative front, 
+Skorokhodov et al.~\shortcite{skorokhodov2021stylegan} suggest a style-based model which can produce short (e.g. $3$), coherent sequences of frames. However, their method requires temporal datasets, which currently exhibit lower quality and insufficient data.
+Other works \cite{fox2021stylevideogan, tian2021good} train a second generator to produce temporally coherent latent codes for a pre-trained, fixed StyleGAN. They aim to disentangle spatial and temporal information. Tian et al.~\shortcite{tian2021good} train a temporal LSTM-based generator.
+Taking a different approach, Fox et al.~\shortcite{fox2021stylevideogan} use only a single video. The produced latent sequences are later projected to arbitrary latent codes, resulting in animating random subjects. 
+However, while offering solid initial results, these methods do not succeed in faithfully inverting a real video or editing it.
+
+\paragraph{Video Semantic Editing}
+
+Many approaches suggested the editing of facial attributes in images~\cite{lample2017fader, choi2018stargan, liu2019stgan, mokady2019masked, he2019attgan}. However, applying these at the frame level typically results in temporal inconsistencies, leading to unrealistic video manipulations.
+To overcome this challenge, video-specific methods have been proposed. 
+Duong et al.\shortcite{duong2019automatic} perform facial aging in video sequences using deep reinforcement learning. Closest to our work, Yao et al.~\shortcite{yao2021latent} propose to edit real video using StyleGAN by training a dedicated latent-code transformer to achieve more disentangled editing. These edits are applied as part of their proposed pipeline, which first includes a smoothed optical-flow based cropping-and-alignment step to reduce jitter. They then invert the frames using a \wplus encoder~\cite{richardson2020encoding}, perform the editing using their dedicated transformer, and stitch them back to the original video by employing Poisson blending using a segmentation mask.
+In our work, we demonstrate that by building on tools that are already highly consistent, we can achieve improved editing in more challenging settings and with fewer visual artifacts -- without requiring any flow or time-based modules.
+
+

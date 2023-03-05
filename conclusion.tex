@@ -1,0 +1,15 @@
+\section{Discussion}
+
+We presented a novel approach for semantic editing of facial videos. %without requiring additional temporal supervision. 
+By employing smooth and consistent tools, we demonstrated that standard StyleGAN editing techniques can be readily applied to in-the-wild videos, without compromising temporal coherency.
+
+While our method works well in many practical scenarios, it still faces some limitations.
+Particularly, the StyleGAN alignment process is prone to leaving portions of hair (\eg, pigtails) outside the cropped region. These `external' regions do not undergo any semantic manipulations, and may result in jarring transitions when attempting to modify attributes such as hair length or color. 
+A further limitation arises in the form of the `texture sticking' effect investigated in StyleGAN3~\cite{aliasfreeKarras2021}. The use of per-frame optimizations, rather than latent-space interpolations, significantly reduces this effect. However, in some cases it is still visible. We hope that as inversion and editing tools for StyleGAN3 emerge, they could be joined with our approach in order to obtain sticking-free results.
+
+Perhaps surprisingly, our framework produces coherent videos without requiring complex machinery designed to directly enforce temporal coherence.
+% Perhaps surprisingly, our framework even outperforms more complex methods, which are designed to directly enforce temporal coherence. 
+These results indicate that spectral and inductive biases can play a crucial role in maintaining coherency, yielding significant advantages over attempts to brute-force consistency through loss terms.
+In addition, we highlight the challenge of stitching an edited crop to the video and propose a designated tuning scheme which can avoid the pitfalls associated with current Poisson-blending approaches.
+Looking forward, we hope that our approach can be improved with temporally-aware goals that are meant to supplement it, rather than serve as substitutions. For example, it may be possible to fine-tune the inversion encoder on the input video, to motivate greater consistency in the generated codes. 
+% \ron{Moreover, a release of a high-quality video dataset might lead to new directions, utilizing the power of additional supervision.}

@@ -1,0 +1,229 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{karras2019style,karras2020analyzing}
+\citation{skorokhodov2021stylegan,yan2021videogpt,yu2022generating}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Video editing using our proposed pipeline. Our framework can successfully apply consistent semantic manipulations to challenging talking-head videos, without requiring any temporal components or losses.\relax }}{1}{figure.1}\protected@file@percent }
+\newlabel{fig:teaser}{{1}{1}{Video editing using our proposed pipeline. Our framework can successfully apply consistent semantic manipulations to challenging talking-head videos, without requiring any temporal components or losses.\relax }{figure.1}{}}
+\newlabel{fig:teaser@cref}{{[figure][1][]1}{[1][1][]1}}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}\hskip -1em.\nobreakspace  {}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{brf}{\backcite{karras2019style,karras2020analyzing}{{1}{1}{section.1}}}
+\@writefile{brf}{\backcite{skorokhodov2021stylegan,yan2021videogpt,yu2022generating}{{1}{1}{section.1}}}
+\citation{roich2021pivotal}
+\citation{wu2021stylealign,pinkney2020resolution,gal2021stylegannada}
+\citation{yao2021latent}
+\citation{yao2021latent}
+\citation{karras2019style,karras2020analyzing}
+\citation{shen2020interpreting,abdal2020styleflow,denton2019detecting,goetschalckx2019ganalyze,tewari2020pie,tewari2020stylerig}
+\citation{harkonen2020ganspace,shen2020closedform,voynov2020unsupervised,wang2021a,patashnik2021styleclip,xia2021tedigan,gal2021stylegannada}
+\citation{zhu2016generative,lipton2017precise,creswell2018inverting,yeh2017semantic,xia2021gan}
+\citation{abdal2019image2stylegan,abdal2020image2stylegan++,semantic2019bau,zhu2020improved,gu2020image,xu2021continuity,roich2021pivotal}
+\citation{zhu2020domain,pidhorskyi2020adversarial,guan2020collaborative,richardson2020encoding,tov2021designing,alaluf2021restyle,kang2021gan,kim2021exploiting,alaluf2021hyperstyle}
+\citation{zhu2020improved,tov2021designing}
+\citation{tov2021designing}
+\citation{roich2021pivotal}
+\citation{xu2021continuity}
+\@writefile{brf}{\backcite{roich2021pivotal}{{2}{1}{section.1}}}
+\@writefile{brf}{\backcite{wu2021stylealign,pinkney2020resolution,gal2021stylegannada}{{2}{1}{section.1}}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.\nobreakspace  {}Background and Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:rw}{{2}{2}{\hskip -1em.~Background and Related Work}{section.2}{}}
+\newlabel{sec:rw@cref}{{[section][2][]2}{[1][2][]2}}
+\@writefile{toc}{\contentsline {paragraph}{StyleGAN-based Editing}{2}{section*.3}\protected@file@percent }
+\@writefile{brf}{\backcite{karras2019style, karras2020analyzing}{{2}{2}{section*.3}}}
+\@writefile{brf}{\backcite{shen2020interpreting,abdal2020styleflow,denton2019detecting, goetschalckx2019ganalyze, tewari2020pie, tewari2020stylerig}{{2}{2}{section*.3}}}
+\@writefile{brf}{\backcite{harkonen2020ganspace,shen2020closedform,voynov2020unsupervised,wang2021a,patashnik2021styleclip,xia2021tedigan,gal2021stylegannada}{{2}{2}{section*.3}}}
+\@writefile{toc}{\contentsline {paragraph}{GAN Inversion}{2}{section*.4}\protected@file@percent }
+\@writefile{brf}{\backcite{zhu2016generative,lipton2017precise,creswell2018inverting, yeh2017semantic, xia2021gan}{{2}{2}{section*.4}}}
+\@writefile{brf}{\backcite{abdal2019image2stylegan,abdal2020image2stylegan++,semantic2019bau,zhu2020improved,gu2020image, xu2021continuity, roich2021pivotal}{{2}{2}{section*.4}}}
+\@writefile{brf}{\backcite{zhu2020domain, pidhorskyi2020adversarial,guan2020collaborative,richardson2020encoding,tov2021designing,alaluf2021restyle,kang2021gan,kim2021exploiting, alaluf2021hyperstyle}{{2}{2}{section*.4}}}
+\@writefile{brf}{\backcite{zhu2020improved, tov2021designing}{{2}{2}{section*.4}}}
+\citation{skorokhodov2021stylegan}
+\citation{fox2021stylevideogan,tian2021good}
+\citation{tian2021good}
+\citation{fox2021stylevideogan}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Our full video editing pipeline contains $6$ steps. $(1)$ Videos are split into individual frames. The face in each frame is cropped and aligned. $(2)$ Each cropped face is inverted into the latent space of a pre-trained StyleGAN2 model, using a pre-trained e4e encoder. $(3)$ The generator is fine-tuned using PTI across all video frames in parallel, correcting for inaccuracies in the initial inversion and restoring global coherence. $(4)$ All frames are edited by manipulating their pivot latent codes linearly, using a fixed direction and step-size. $(5)$ We fine-tune the generator a second time, stitching the backgrounds and the edited faces together in a spatially-smooth manner. $(6)$ We reverse the alignment step and paste the modified face into the video. \relax }}{3}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:pipeline}{{2}{3}{Our full video editing pipeline contains $6$ steps. $(1)$ Videos are split into individual frames. The face in each frame is cropped and aligned. $(2)$ Each cropped face is inverted into the latent space of a pre-trained StyleGAN2 model, using a pre-trained e4e encoder. $(3)$ The generator is fine-tuned using PTI across all video frames in parallel, correcting for inaccuracies in the initial inversion and restoring global coherence. $(4)$ All frames are edited by manipulating their pivot latent codes linearly, using a fixed direction and step-size. $(5)$ We fine-tune the generator a second time, stitching the backgrounds and the edited faces together in a spatially-smooth manner. $(6)$ We reverse the alignment step and paste the modified face into the video. \relax }{figure.caption.1}{}}
+\newlabel{fig:pipeline@cref}{{[figure][2][]2}{[1][2][]3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Visualization of our full editing pipeline. In the left column, we show three frames extracted from the source video. In the following columns, we show intermediate results of our pipeline over the same three frames. Left to right: the encoder-inversion step, the PTI fine-tuning step, the pivot editing step, and finally our stitching procedure. When not applying our stitching procedure, we use a segmentation-mask based blending procedure\nobreakspace  {}\cite  {yao2021latent}. Note in particular the neck region, which displays considerable artifacts after the editing step which are then eliminated through our stitching-tuning approach. \relax }}{3}{figure.caption.2}\protected@file@percent }
+\@writefile{brf}{\backcite{yao2021latent}{{3}{3}{figure.caption.2}}}
+\newlabel{fig:pipeline_example}{{3}{3}{Visualization of our full editing pipeline. In the left column, we show three frames extracted from the source video. In the following columns, we show intermediate results of our pipeline over the same three frames. Left to right: the encoder-inversion step, the PTI fine-tuning step, the pivot editing step, and finally our stitching procedure. When not applying our stitching procedure, we use a segmentation-mask based blending procedure~\shortcite {yao2021latent}. Note in particular the neck region, which displays considerable artifacts after the editing step which are then eliminated through our stitching-tuning approach. \relax }{figure.caption.2}{}}
+\newlabel{fig:pipeline_example@cref}{{[figure][3][]3}{[1][2][]3}}
+\@writefile{brf}{\backcite{tov2021designing}{{3}{2}{section*.4}}}
+\@writefile{brf}{\backcite{roich2021pivotal}{{3}{2}{section*.4}}}
+\@writefile{brf}{\backcite{xu2021continuity}{{3}{2}{section*.4}}}
+\@writefile{toc}{\contentsline {paragraph}{Video Generation using StyleGAN}{3}{section*.5}\protected@file@percent }
+\@writefile{brf}{\backcite{skorokhodov2021stylegan}{{3}{2}{section*.5}}}
+\@writefile{brf}{\backcite{fox2021stylevideogan, tian2021good}{{3}{2}{section*.5}}}
+\@writefile{brf}{\backcite{tian2021good}{{3}{2}{section*.5}}}
+\@writefile{brf}{\backcite{fox2021stylevideogan}{{3}{2}{section*.5}}}
+\citation{lample2017fader,choi2018stargan,liu2019stgan,mokady2019masked,he2019attgan}
+\citation{duong2019automatic}
+\citation{yao2021latent}
+\citation{richardson2020encoding}
+\citation{fox2021stylevideogan}
+\citation{roich2021pivotal}
+\citation{tov2021designing}
+\citation{tov2021designing}
+\citation{rahaman2019spectral}
+\@writefile{toc}{\contentsline {paragraph}{Video Semantic Editing}{4}{section*.6}\protected@file@percent }
+\@writefile{brf}{\backcite{lample2017fader, choi2018stargan, liu2019stgan, mokady2019masked, he2019attgan}{{4}{2}{section*.6}}}
+\@writefile{brf}{\backcite{duong2019automatic}{{4}{2}{section*.6}}}
+\@writefile{brf}{\backcite{yao2021latent}{{4}{2}{section*.6}}}
+\@writefile{brf}{\backcite{richardson2020encoding}{{4}{2}{section*.6}}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Method}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Alignment}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{subsec:alignment}{{3.1}{4}{\hskip -1em.~Alignment}{subsection.3.1}{}}
+\newlabel{subsec:alignment@cref}{{[subsection][1][3]3.1}{[1][4][]4}}
+\@writefile{brf}{\backcite{fox2021stylevideogan}{{4}{3.1}{subsection.3.1}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\hskip -1em.\nobreakspace  {}Inversion}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{brf}{\backcite{roich2021pivotal}{{4}{3.2}{subsection.3.2}}}
+\@writefile{brf}{\backcite{tov2021designing}{{4}{3.2}{subsection.3.2}}}
+\@writefile{brf}{\backcite{tov2021designing}{{4}{3.2}{subsection.3.2}}}
+\@writefile{brf}{\backcite{rahaman2019spectral}{{4}{3.2}{subsection.3.2}}}
+\citation{Zhang2018TheUE}
+\citation{roich2021pivotal}
+\citation{shen2020interpreting,patashnik2021styleclip}
+\citation{yu2021bisenet}
+\citation{yu2021bisenet}
+\citation{yao2021latent}
+\citation{yu2021bisenet}
+\@writefile{brf}{\backcite{Zhang2018TheUE}{{5}{3.2}{equation.3.1}}}
+\@writefile{brf}{\backcite{roich2021pivotal}{{5}{3.2}{equation.3.1}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}\hskip -1em.\nobreakspace  {}Editing}{5}{subsection.3.3}\protected@file@percent }
+\@writefile{brf}{\backcite{shen2020interpreting,patashnik2021styleclip}{{5}{3.3}{subsection.3.3}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}\hskip -1em.\nobreakspace  {}Stitching Tuning}{5}{subsection.3.4}\protected@file@percent }
+\@writefile{brf}{\backcite{yao2021latent}{{5}{3.4}{figure.caption.7}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Outline of our stitching-tuning method. We start with generating an edited image using a modified pivot code and segment the image using an off-the-shelf segmentation network \cite  {yu2021bisenet}. The segmentation mask is dilated, creating a boundary region. We then fine-tune the generator so that the modified pivot will provide an image that is $(a)$ consistent with the original edit inside the face mask (blue), and $(b)$ consistent with the original background inside the boundary mask (red). We synthesize the final image using the tuned generator and paste it inside the dilated mask region (blue + red). \relax }}{5}{figure.caption.7}\protected@file@percent }
+\@writefile{brf}{\backcite{yu2021bisenet}{{5}{4}{figure.caption.7}}}
+\newlabel{fig:stitching}{{4}{5}{Outline of our stitching-tuning method. We start with generating an edited image using a modified pivot code and segment the image using an off-the-shelf segmentation network \cite {yu2021bisenet}. The segmentation mask is dilated, creating a boundary region. We then fine-tune the generator so that the modified pivot will provide an image that is $(a)$ consistent with the original edit inside the face mask (blue), and $(b)$ consistent with the original background inside the boundary mask (red). We synthesize the final image using the tuned generator and paste it inside the dilated mask region (blue + red). \relax }{figure.caption.7}{}}
+\newlabel{fig:stitching@cref}{{[figure][4][]4}{[1][5][]5}}
+\@writefile{brf}{\backcite{yu2021bisenet}{{5}{3.4}{figure.caption.7}}}
+\citation{shen2020interpreting}
+\citation{patashnik2021styleclip}
+\citation{yao2021latent}
+\citation{roich2021pivotal}
+\citation{yao2021latent}
+\citation{yao2021latent}
+\citation{gal2021stylegannada}
+\citation{alaluf2021hyperstyle}
+\citation{zhu2021mind}
+\citation{deng2019arcface}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Multiple editing results over a single video. Our model preserves the original video details while enabling a range of semantic manipulations.\relax }}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:ours}{{5}{6}{Multiple editing results over a single video. Our model preserves the original video details while enabling a range of semantic manipulations.\relax }{figure.caption.8}{}}
+\newlabel{fig:ours@cref}{{[figure][5][]5}{[1][6][]6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}\hskip -1em.\nobreakspace  {}Implementation Details}{6}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Experiments}{6}{section.4}\protected@file@percent }
+\@writefile{brf}{\backcite{shen2020interpreting}{{6}{4}{section.4}}}
+\@writefile{brf}{\backcite{patashnik2021styleclip}{{6}{4}{section.4}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Qualitative Results}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{brf}{\backcite{yao2021latent}{{6}{4.1}{figure.caption.10}}}
+\@writefile{brf}{\backcite{yao2021latent}{{6}{4.1}{figure.caption.10}}}
+\@writefile{brf}{\backcite{gal2021stylegannada}{{6}{4.1}{figure.caption.11}}}
+\@writefile{brf}{\backcite{alaluf2021hyperstyle}{{6}{4.1}{figure.caption.11}}}
+\@writefile{brf}{\backcite{zhu2021mind}{{6}{4.1}{figure.caption.11}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}Quantitative Results}{6}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:quantitative}{{4.2}{6}{\hskip -1em.~Quantitative Results}{subsection.4.2}{}}
+\newlabel{sec:quantitative@cref}{{[subsection][2][4]4.2}{[1][6][]6}}
+\@writefile{brf}{\backcite{deng2019arcface}{{6}{4.2}{subsection.4.2}}}
+\citation{roich2021pivotal}
+\citation{yao2021latent}
+\citation{richardson2020encoding}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Additional Video editing results using our proposed pipeline. For most modifications, our stitching framework can handle more challenging cases such as long hair.\relax }}{7}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:harris}{{6}{7}{Additional Video editing results using our proposed pipeline. For most modifications, our stitching framework can handle more challenging cases such as long hair.\relax }{figure.caption.9}{}}
+\newlabel{fig:harris@cref}{{[figure][6][]6}{[1][6][]7}}
+\@writefile{brf}{\backcite{yao2021latent}{{7}{\caption@xref {??}{ on input line 12}}{figure.caption.10}}}
+\@writefile{brf}{\backcite{roich2021pivotal}{{7}{\caption@xref {??}{ on input line 18}}{figure.caption.10}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Visual comparison to alternative editing pipelines. Our method retains a higher degree of temporal consistency, produces realistic editing, and successfully mitigates blending-induced artifacts.\relax }}{7}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:comparison}{{7}{7}{Visual comparison to alternative editing pipelines. Our method retains a higher degree of temporal consistency, produces realistic editing, and successfully mitigates blending-induced artifacts.\relax }{figure.caption.10}{}}
+\newlabel{fig:comparison@cref}{{[figure][7][]7}{[1][6][]7}}
+\@writefile{brf}{\backcite{roich2021pivotal}{{7}{4.2}{subsection.4.2}}}
+\@writefile{brf}{\backcite{yao2021latent}{{7}{4.2}{subsection.4.2}}}
+\@writefile{brf}{\backcite{richardson2020encoding}{{7}{4.2}{subsection.4.2}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Out-of-domain video editing. Our method can seamlessly adapt to other facial domains, and can handle challenging poses and expressions.\relax }}{7}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:ood}{{8}{7}{Out-of-domain video editing. Our method can seamlessly adapt to other facial domains, and can handle challenging poses and expressions.\relax }{figure.caption.11}{}}
+\newlabel{fig:ood@cref}{{[figure][8][]8}{[1][6][]7}}
+\citation{aliasfreeKarras2021}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Temporal consistency metrics. Encoder based methods display improved identity preservation at the local (adjacent frame) level, but show considerable identity drift over time. PTI, preserves a greater degree of global identity, at the cost of local jitter from inconsistent pivots. Our pipeline outperforms the alternatives and achieves a local-identity preservation score which is nearly equal to the original video (1), demonstrating our ability to maintain a high degree of consistency.\relax }}{8}{table.caption.12}\protected@file@percent }
+\newlabel{tb:temporal_id}{{1}{8}{Temporal consistency metrics. Encoder based methods display improved identity preservation at the local (adjacent frame) level, but show considerable identity drift over time. PTI, preserves a greater degree of global identity, at the cost of local jitter from inconsistent pivots. Our pipeline outperforms the alternatives and achieves a local-identity preservation score which is nearly equal to the original video (1), demonstrating our ability to maintain a high degree of consistency.\relax }{table.caption.12}{}}
+\newlabel{tb:temporal_id@cref}{{[table][1][]1}{[1][8][]8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Ablation Study}{8}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:ablation}{{4.3}{8}{\hskip -1em.~Ablation Study}{subsection.4.3}{}}
+\newlabel{sec:ablation@cref}{{[subsection][3][4]4.3}{[1][8][]8}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Discussion}{8}{section.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Qualitative demonstration of the importance of our pipeline components. Replacing the encoder with an optimization step results in poor editing consistency. Without PTI, identity drifts over time, and stitching performance deteriorates. Replacing stitching with a mask-based blending scheme results in visual artifacts, such as sharp transitions in hair regions. Our full pipeline successfully avoids these pitfalls and generates a consistent video.\relax }}{8}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:ablation}{{9}{8}{Qualitative demonstration of the importance of our pipeline components. Replacing the encoder with an optimization step results in poor editing consistency. Without PTI, identity drifts over time, and stitching performance deteriorates. Replacing stitching with a mask-based blending scheme results in visual artifacts, such as sharp transitions in hair regions. Our full pipeline successfully avoids these pitfalls and generates a consistent video.\relax }{figure.caption.13}{}}
+\newlabel{fig:ablation@cref}{{[figure][9][]9}{[1][8][]8}}
+\@writefile{brf}{\backcite{aliasfreeKarras2021}{{8}{5}{section.5}}}
+\bibstyle{ieee_fullname}
+\bibdata{egbib}
+\bibcite{abdal2019image2stylegan}{1}
+\bibcite{abdal2020image2stylegan++}{2}
+\bibcite{abdal2020styleflow}{3}
+\bibcite{alaluf2021restyle}{4}
+\bibcite{alaluf2021hyperstyle}{5}
+\bibcite{semantic2019bau}{6}
+\bibcite{choi2018stargan}{7}
+\bibcite{creswell2018inverting}{8}
+\bibcite{deng2019arcface}{9}
+\bibcite{denton2019detecting}{10}
+\bibcite{duong2019automatic}{11}
+\bibcite{fox2021stylevideogan}{12}
+\bibcite{gal2021stylegannada}{13}
+\bibcite{goetschalckx2019ganalyze}{14}
+\bibcite{gu2020image}{15}
+\bibcite{guan2020collaborative}{16}
+\bibcite{harkonen2020ganspace}{17}
+\bibcite{he2019attgan}{18}
+\bibcite{kang2021gan}{19}
+\bibcite{aliasfreeKarras2021}{20}
+\bibcite{karras2019style}{21}
+\bibcite{karras2020analyzing}{22}
+\bibcite{kim2021exploiting}{23}
+\bibcite{lample2017fader}{24}
+\bibcite{lipton2017precise}{25}
+\bibcite{liu2019stgan}{26}
+\bibcite{mokady2019masked}{27}
+\bibcite{patashnik2021styleclip}{28}
+\bibcite{pidhorskyi2020adversarial}{29}
+\bibcite{pinkney2020resolution}{30}
+\bibcite{rahaman2019spectral}{31}
+\bibcite{richardson2020encoding}{32}
+\bibcite{roich2021pivotal}{33}
+\bibcite{shen2020interpreting}{34}
+\bibcite{shen2020closedform}{35}
+\bibcite{skorokhodov2021stylegan}{36}
+\bibcite{tewari2020stylerig}{37}
+\bibcite{tewari2020pie}{38}
+\bibcite{tian2021good}{39}
+\bibcite{tov2021designing}{40}
+\bibcite{voynov2020unsupervised}{41}
+\bibcite{wang2021a}{42}
+\bibcite{wu2021stylealign}{43}
+\bibcite{xia2021tedigan}{44}
+\bibcite{xia2021gan}{45}
+\bibcite{xu2021continuity}{46}
+\bibcite{yan2021videogpt}{47}
+\bibcite{yao2021latent}{48}
+\bibcite{yeh2017semantic}{49}
+\bibcite{yu2021bisenet}{50}
+\bibcite{yu2022generating}{51}
+\bibcite{Zhang2018TheUE}{52}
+\bibcite{zhu2020domain}{53}
+\bibcite{zhu2016generative}{54}
+\bibcite{zhu2021mind}{55}
+\bibcite{zhu2020improved}{56}
+\gdef \@abspage@last{11}

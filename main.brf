@@ -1,0 +1,48 @@
+\backcite {karras2019style,karras2020analyzing}{{1}{1}{section.1}}
+\backcite {skorokhodov2021stylegan,yan2021videogpt,yu2022generating}{{1}{1}{section.1}}
+\backcite {roich2021pivotal}{{2}{1}{section.1}}
+\backcite {wu2021stylealign,pinkney2020resolution,gal2021stylegannada}{{2}{1}{section.1}}
+\backcite {karras2019style, karras2020analyzing}{{2}{2}{section*.3}}
+\backcite {shen2020interpreting,abdal2020styleflow,denton2019detecting, goetschalckx2019ganalyze, tewari2020pie, tewari2020stylerig}{{2}{2}{section*.3}}
+\backcite {harkonen2020ganspace,shen2020closedform,voynov2020unsupervised,wang2021a,patashnik2021styleclip,xia2021tedigan,gal2021stylegannada}{{2}{2}{section*.3}}
+\backcite {zhu2016generative,lipton2017precise,creswell2018inverting, yeh2017semantic, xia2021gan}{{2}{2}{section*.4}}
+\backcite {abdal2019image2stylegan,abdal2020image2stylegan++,semantic2019bau,zhu2020improved,gu2020image, xu2021continuity, roich2021pivotal}{{2}{2}{section*.4}}
+\backcite {zhu2020domain, pidhorskyi2020adversarial,guan2020collaborative,richardson2020encoding,tov2021designing,alaluf2021restyle,kang2021gan,kim2021exploiting, alaluf2021hyperstyle}{{2}{2}{section*.4}}
+\backcite {zhu2020improved, tov2021designing}{{2}{2}{section*.4}}
+\backcite {yao2021latent}{{3}{3}{figure.caption.2}}
+\backcite {tov2021designing}{{3}{2}{section*.4}}
+\backcite {roich2021pivotal}{{3}{2}{section*.4}}
+\backcite {xu2021continuity}{{3}{2}{section*.4}}
+\backcite {skorokhodov2021stylegan}{{3}{2}{section*.5}}
+\backcite {fox2021stylevideogan, tian2021good}{{3}{2}{section*.5}}
+\backcite {tian2021good}{{3}{2}{section*.5}}
+\backcite {fox2021stylevideogan}{{3}{2}{section*.5}}
+\backcite {lample2017fader, choi2018stargan, liu2019stgan, mokady2019masked, he2019attgan}{{4}{2}{section*.6}}
+\backcite {duong2019automatic}{{4}{2}{section*.6}}
+\backcite {yao2021latent}{{4}{2}{section*.6}}
+\backcite {richardson2020encoding}{{4}{2}{section*.6}}
+\backcite {fox2021stylevideogan}{{4}{3.1}{subsection.3.1}}
+\backcite {roich2021pivotal}{{4}{3.2}{subsection.3.2}}
+\backcite {tov2021designing}{{4}{3.2}{subsection.3.2}}
+\backcite {tov2021designing}{{4}{3.2}{subsection.3.2}}
+\backcite {rahaman2019spectral}{{4}{3.2}{subsection.3.2}}
+\backcite {Zhang2018TheUE}{{5}{3.2}{equation.3.1}}
+\backcite {roich2021pivotal}{{5}{3.2}{equation.3.1}}
+\backcite {shen2020interpreting,patashnik2021styleclip}{{5}{3.3}{subsection.3.3}}
+\backcite {yao2021latent}{{5}{3.4}{figure.caption.7}}
+\backcite {yu2021bisenet}{{5}{4}{figure.caption.7}}
+\backcite {yu2021bisenet}{{5}{3.4}{figure.caption.7}}
+\backcite {shen2020interpreting}{{6}{4}{section.4}}
+\backcite {patashnik2021styleclip}{{6}{4}{section.4}}
+\backcite {yao2021latent}{{6}{4.1}{figure.caption.10}}
+\backcite {yao2021latent}{{6}{4.1}{figure.caption.10}}
+\backcite {gal2021stylegannada}{{6}{4.1}{figure.caption.11}}
+\backcite {alaluf2021hyperstyle}{{6}{4.1}{figure.caption.11}}
+\backcite {zhu2021mind}{{6}{4.1}{figure.caption.11}}
+\backcite {deng2019arcface}{{6}{4.2}{subsection.4.2}}
+\backcite {yao2021latent}{{7}{\caption@xref {??}{ on input line 12}}{figure.caption.10}}
+\backcite {roich2021pivotal}{{7}{\caption@xref {??}{ on input line 18}}{figure.caption.10}}
+\backcite {roich2021pivotal}{{7}{4.2}{subsection.4.2}}
+\backcite {yao2021latent}{{7}{4.2}{subsection.4.2}}
+\backcite {richardson2020encoding}{{7}{4.2}{subsection.4.2}}
+\backcite {aliasfreeKarras2021}{{8}{5}{section.5}}

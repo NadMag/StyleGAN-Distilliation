@@ -1,0 +1,17 @@
+\begin{table}[]
+    \centering
+\begin{tabular}{c | c | c }
+        \toprule
+        Model & TL-ID $\uparrow$ & TG-ID $\uparrow$ \\
+        \midrule
+        Latent Transformer & 0.976 & 0.811 \\
+        PTI (optimization) & 0.933 & 0.901 \\
+        Ours & \textbf{0.996} & \textbf{0.933} \\
+        \bottomrule
+\end{tabular}
+
+    \caption{Temporal consistency metrics. Encoder based methods display improved identity preservation at the local (adjacent frame) level, but show considerable identity drift over time. PTI, preserves a greater degree of global identity, at the cost of local jitter from inconsistent pivots. Our pipeline outperforms the alternatives and achieves a local-identity preservation score which is nearly equal to the original video (1), demonstrating our ability to maintain a high degree of consistency.}
+    \vspace{-0.35cm}
+    \label{tb:temporal_id}
+    
+\end{table}
