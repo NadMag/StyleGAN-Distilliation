@@ -5,7 +5,6 @@
 % \usepackage{cvpr}              % To produce the CAMERA-READY version
 \usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
 
-
 \usepackage{booktabs} % For formal tables
 
 % TOG prefers author-name bib system with square brackets
@@ -41,7 +40,7 @@
 \input{macros}
 
 \makeatletter
-\apptocmd\@maketitle{{\myfigure{}\par}}{}{}
+%% \apptocmd\@maketitle{{\myfigure{}\par}}{}{}
 \makeatother
 
 
@@ -50,14 +49,14 @@
 
 % Title portion
 \title{
-Stitch it in Time: GAN-Based Facial Editing of Real Videos}
-
-\newcommand\myfigure{%
-\input{resources/figures/teaser2}
+Optimum Style: Optimal Model Architecure for StyleGAN
 }
 
-\author{Rotem Tzaban \and Ron Mokady \and Rinon Gal \and Amit H. Bermano \and Daniel Cohen-Or \and \\ The Blavatnik School of Computer Science, Tel Aviv University}
+% % \newcommand\myfigure{%
+% % \input{resources/figures/teaser2}
+% % }
 
+\author{Nadav Magar \qquad \qquad Dvir Yosef \\[0.5em] Supervised By: Yotam Nitzan \\[0.3em] \small{The Blavatnik School of Computer Science, Tel Aviv University} }
 
 \maketitle
 
@@ -80,13 +79,13 @@ Stitch it in Time: GAN-Based Facial Editing of Real Videos}
 
 \input{intro}
 
-\input{related}
+% \input{related}
 
-\input{method}
+% \input{method}
 
 \input{results}
 
-\input{conclusion}
+% \input{conclusion}
 
 \newpage
 

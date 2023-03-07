@@ -1,22 +1,12 @@
 \section{Experiments}
-
-We demonstrate the effectiveness of our method by applying it to a range of in-the-wild videos gathered from popular publicly available content. These include challenging scenes characterized by complex backgrounds and considerable movement.
-% \st{Unless otherwise noted, all frames were inverted using a pre-trained e4e~\cite{tov2021designing} encoder into the \w space of the network.} \rmc{I believe we end inverting to W+.. anyway we discuss e4e in the method, it belongs to there to my opinion.} 
-Individual frames were edited using InterFaceGAN~\cite{shen2020interpreting} and StyleCLIP~\cite{patashnik2021styleclip}. All experiments were conducted on a single NVIDIA RTX 2080. The total editing time for a single $300$ frames video is roughly $1.5$ hours.
-The full videos for each setup can be found in our supplementary materials.
-
-\subsection{Qualitative Results}
-
-\input{resources/figures/ours}
-\input{resources/figures/ours_harris}
-
-%We conduct a qualitative evaluation of our method using a series of challenging, in-the-wild scenes from popular publicly available content. 
-
-In \cref{fig:ours,fig:harris} we show key frames extracted from videos edited using our method. Our approach can handle challenging, highly detailed backgrounds, as well as considerable head movement and speech, all of which are beyond the scope of the current state-of-the-art. Moreover, by editing at the frame level, our method is inherently compatible with existing editing techniques, can support manipulations in multiple latent spaces, and can be easily applied for both spatially local (e.g., smile) and global (e.g., age) changes. 
-% \abc{maybe add some specifics here? something like, note that the stitching maintains the straight lines of the shades in the back, and that the skin tone is preserved well through-out the progression of frames} \rgc{I don't think it's needed. We show this and talk about this in our comparisons / ablations where you can also actually see the effects.}
+Write some intro text here
+\subsection{Setup}
+We conduct experiments the the StyleGAN2-ADA \cite{karras2020training} generator (config-F), trained on the FFHQ \cite{karras2019style} (resolution 1024) dataset.
 
 
-\input{resources/figures/comparison}
+\subsection{Optimal Generator Architecture}
+
+
 
 
 In \cref{fig:comparison} we compare our method to~\cite{yao2021latent}, the current state-of-the-art in semantic editing of faces in videos. 
